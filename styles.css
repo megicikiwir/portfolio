@@ -1,0 +1,743 @@
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  cursor: none;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loading-screen.hidden {
+  display: none;
+}
+
+/* Animated gradient background */
+.gradient-bg {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating animation */
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Glow effect */
+.glow {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+/* Typing effect */
+.typing-effect {
+  overflow: hidden;
+  border-right: .15em solid #3b82f6;
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #3b82f6; }
+}
+
+/* Text reveal animation */
+.reveal-text {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal-text.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Skill progress bar */
+.skill-bar {
+  height: 8px;
+  background: #e0f2fe;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 4px;
+  width: 0;
+  transition: width 1.5s ease;
+}
+
+/* Magnetic button effect */
+.magnetic-btn {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+/* Interactive cursor */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #3b82f6;
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.1s ease;
+}
+
+.cursor-outline {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #3b82f6;
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.5;
+}
+
+/* Parallax layers */
+.parallax-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* Custom styles to prevent text overflow */
+.text-wrap {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Navbar full width */
+#navbar {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background-color: transparent; /* Pastikan background transparan saat di atas */
+}
+
+#navbar > div { /* Container langsung di dalam navbar */
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+#navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  height: auto !important;
+  padding: 0.5rem 0 !important;
+}
+
+#navbar.scrolled > div {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Navbar link styling */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+  padding: 0.5rem 1rem !important;
+}
+
+.nav-link:hover {
+  color: #3b82f6 !important;
+  background: none !important;
+}
+
+.nav-link.active {
+  color: #3b82f6 !important;
+  font-weight: 600;
+  background: none !important;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background-color: #3b82f6;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.gradient-overlay {
+  background: linear-gradient(to bottom, rgba(59, 130, 246, 0.9), rgba(37, 99, 235, 0.8), rgba(29, 78, 216, 0.9));
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+section {
+  transition: opacity 0.3s ease-in-out;
+}
+
+#mobile-menu {
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.mobile-link {
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.mobile-link:hover {
+  color: #3b82f6;
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a:focus,
+button:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Geser foto dan isi home ke bawah */
+#hero {
+  padding-top: 5rem !important;
+}
+
+#hero .order-1 {
+  margin-top: 2rem !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  /* Smooth scrolling fix for mobile */
+  html {
+    scroll-behavior: auto;
+  }
+  
+  /* Hide custom cursor on mobile */
+  .cursor-dot,
+  .cursor-outline {
+    display: none;
+  }
+  
+  body {
+    cursor: auto;
+  }
+  
+  /* Perkecil ukuran font di mobile */
+  h1 {
+    font-size: 1.75rem !important; /* Diperkecil dari 2rem */
+  }
+  
+  h2 {
+    font-size: 1.5rem !important; /* Diperkecil dari 1.75rem */
+  }
+  
+  h3 {
+    font-size: 1.25rem !important; /* Diperkecil dari 1.5rem */
+  }
+  
+  h4 {
+    font-size: 1.1rem !important; /* Diperkecil dari 1.25rem */
+  }
+  
+  p {
+    font-size: 0.9rem !important; /* Diperbesar dari 0.85rem untuk keterbacaan */
+    line-height: 1.5 !important;
+  }
+  
+  .text-sm {
+    font-size: 0.85rem !important; /* Diperbesar dari 0.8rem */
+  }
+  
+  .text-xs {
+    font-size: 0.8rem !important; /* Diperbesar dari 0.75rem */
+  }
+  
+  /* Perkecil padding di mobile */
+  section {
+    padding: 2rem 1rem !important;
+  }
+  
+  .container {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  
+  /* Perkecil gambar profil di mobile */
+  .w-64.h-64,
+  .sm\:w-80.sm\:h-80,
+  .md\:w-96.md\:h-96 {
+    width: 10rem !important;
+    height: 10rem !important;
+  }
+  
+  /* Geser foto di bagian home sedikit ke bawah */
+  #hero {
+    padding-top: 4rem !important;
+  }
+  
+  #hero .order-1 {
+    margin-top: 1.5rem !important; /* Menambahkan margin-top untuk menggeser foto ke bawah */
+  }
+  
+  /* Perkecil card di mobile */
+  .bg-card {
+    padding: 1rem !important;
+  }
+  
+  /* Perkecil tombol di mobile */
+  .px-6.py-3 {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.85rem !important;
+  }
+  
+  /* Perkecil ikon di mobile */
+  .w-5.h-5 {
+    width: 0.875rem !important;
+    height: 0.875rem !important;
+  }
+  
+  .w-6.h-6 {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+  
+  /* Perkecil jarak antar elemen di mobile */
+  .gap-1 {
+    gap: 0.25rem !important;
+  }
+  
+  .gap-2 {
+    gap: 0.5rem !important;
+  }
+  
+  .gap-3 {
+    gap: 0.75rem !important;
+  }
+  
+  .gap-4 {
+    gap: 1rem !important;
+  }
+  
+  .gap-6 {
+    gap: 1.5rem !important;
+  }
+  
+  .gap-8 {
+    gap: 2rem !important;
+  }
+  
+  /* Perkecil margin di mobile */
+  .mb-2 {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .mb-3 {
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .mb-4 {
+    margin-bottom: 1rem !important;
+  }
+  
+  .mb-6 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .mb-8 {
+    margin-bottom: 2rem !important;
+  }
+  
+  .mb-12 {
+    margin-bottom: 3rem !important;
+  }
+  
+  /* Perkecil padding di mobile */
+  .p-2 {
+    padding: 0.5rem !important;
+  }
+  
+  .p-3 {
+    padding: 0.75rem !important;
+  }
+  
+  .p-4 {
+    padding: 1rem !important;
+  }
+  
+  .p-6 {
+    padding: 1.5rem !important;
+  }
+  
+  .px-4 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .py-2 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  /* Perkecil ukuran tag skills di mobile */
+  .px-4.py-2 {
+    padding: 0.25rem 0.75rem !important;
+    font-size: 0.75rem !important;
+  }
+  
+  /* Typing effect adjustment for mobile */
+  .typing-effect {
+    font-size: 0.9rem !important;
+    white-space: normal;
+    border-right: none;
+    animation: none;
+  }
+  
+  .typing-effect::after {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 1.2em;
+    background-color: #3b82f6;
+    animation: blink-caret .75s step-end infinite;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+  }
+  
+  /* Mobile menu adjustments */
+  #mobile-menu {
+    padding: 0.5rem 0 !important;
+  }
+  
+  .mobile-link {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.85rem !important;
+  }
+  
+  /* Navbar adjustments */
+  #navbar {
+    height: 3rem !important;
+  }
+  
+  #navbar > div {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  #navbar .text-xl {
+    font-size: 1.25rem !important;
+  }
+  
+  /* Make about image same size as home image */
+  #about .aspect-square {
+    width: 10rem !important;
+    height: 10rem !important;
+  }
+  
+  #about .max-w-sm {
+    max-width: 10rem !important;
+  }
+  
+  /* Project grid adjustments */
+  .grid {
+    gap: 1rem !important;
+  }
+  
+  /* Skills section adjustments */
+  #skills .bg-card {
+    padding: 1rem !important;
+  }
+  
+  #skills .p-3 {
+    padding: 0.5rem !important;
+  }
+  
+  #skills .gap-2 {
+    gap: 0.25rem !important;
+  }
+  
+  #skills .px-3.py-1 {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.75rem !important;
+  }
+  
+  /* Experience section adjustments */
+  #experience .bg-card {
+    padding: 1rem !important;
+  }
+  
+  #experience .p-3 {
+    padding: 0.5rem !important;
+  }
+  
+  #experience .gap-3 {
+    gap: 0.75rem !important;
+  }
+  
+  #experience .w-5.h-5 {
+    width: 0.875rem !important;
+    height: 0.875rem !important;
+  }
+  
+  /* Contact section adjustments */
+  #contact .grid {
+    gap: 0.75rem !important;
+  }
+  
+  #contact .p-3 {
+    padding: 0.5rem !important;
+  }
+  
+  #contact .gap-2,
+  #contact .gap-3 {
+    gap: 0.5rem !important;
+  }
+  
+  #contact .text-xs {
+    font-size: 0.8rem !important; /* Diperbesar untuk keterbacaan */
+  }
+  
+  #contact .text-sm {
+    font-size: 0.85rem !important; /* Diperbesar untuk keterbacaan */
+  }
+  
+  #contact .mb-6,
+  #contact .mb-8 {
+    margin-bottom: 1rem !important;
+  }
+  
+  #contact .pt-4,
+  #contact .pt-6 {
+    padding-top: 0.75rem !important;
+  }
+  
+  #contact footer {
+    margin-top: 1.5rem !important;
+    padding-top: 0.75rem !important;
+  }
+}
+
+/* Mobile contact section optimization */
+@media (max-width: 768px) {
+  #contact {
+    padding: 2rem 1rem !important;
+  }
+  
+  #contact .container {
+    padding: 0 !important;
+  }
+  
+  #contact .bg-card {
+    padding: 1rem !important;
+  }
+  
+  #contact .grid {
+    gap: 0.75rem !important;
+  }
+  
+  #contact .p-3 {
+    padding: 0.5rem !important;
+  }
+  
+  #contact .gap-2,
+  #contact .gap-3 {
+    gap: 0.5rem !important;
+  }
+  
+  #contact .text-xs {
+    font-size: 0.8rem !important;
+  }
+  
+  #contact .text-sm {
+    font-size: 0.85rem !important;
+  }
+  
+  #contact .mb-6,
+  #contact .mb-8 {
+    margin-bottom: 1rem !important;
+  }
+  
+  #contact .pt-4,
+  #contact .pt-6 {
+    padding-top: 0.75rem !important;
+  }
+  
+  #contact footer {
+    margin-top: 1.5rem !important;
+    padding-top: 0.75rem !important;
+  }
+}
+
+@media print {
+  nav,
+  #mobile-menu,
+  .cursor-dot,
+  .cursor-outline {
+    display: none;
+  }
+  section {
+    page-break-inside: avoid;
+  }
+}
+
+/* Hide cursor on touch devices */
+@media (hover: none) {
+  .cursor-dot,
+  .cursor-outline {
+    display: none !important;
+  }
+  
+  body {
+    cursor: auto !important;
+  }
+}
+
+/* Project card adjustments */
+.project-card {
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Language indicator colors */
+.project-language {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* Specific language colors */
+.language-javascript { background-color: #f1e05a; }
+.language-typescript { background-color: #2b7489; }
+.language-html { background-color: #e34c26; }
+.language-css { background-color: #563d7c; }
+.language-php { background-color: #4F5D95; }
+.language-python { background-color: #3572A5; }
+.language-java { background-color: #b07219; }
+.language-cpp { background-color: #f34b7d; }
+.language-c { background-color: #555555; }
+.language-ruby { background-color: #701516; }
+.language-go { background-color: #00ADD8; }
+.language-swift { background-color: #ffac45; }
+.language-kotlin { background-color: #F18E33; }
+.language-rust { background-color: #dea584; }
+.language-shell { background-color: #89e051; }
+.language-default { background-color: #cccccc; }

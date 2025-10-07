@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Mega - Siswa PKL SMK</title>
+    <meta name="description" content="Portfolio siswa SMK jurusan Pemrograman Perangkat Bergerak">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        'primary-foreground': '#ffffff',
+                        secondary: '#f1f5f9',
+                        'secondary-foreground': '#1e293b',
+                        muted: '#f1f5f9',
+                        'muted-foreground': '#64748b',
+                        accent: '#e0f2fe',
+                        'accent-foreground': '#1e293b',
+                        border: '#e0f2fe',
+                        background: '#ffffff',
+                        foreground: '#1e293b',
+                        card: '#ffffff',
+                        'card-foreground': '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-foreground">
+    
+    <!-- Interactive Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    
+    <div class="loading-screen" id="loading-screen">
+        <div class="text-center">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            <p class="mt-4 text-muted-foreground">Memuat...</p>
+        </div>
+    </div>
+    
+    <!-- Navbar Full Width -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#hero" class="text-xl font-bold text-primary">Portfolio</a>
+                
+                <div class="hidden md:flex items-center gap-1">
+                    <a href="#hero" class="nav-link px-4 py-2 rounded-md hover:bg-muted transition-colors">Beranda</a>
+                    <a href="#about" class="nav-link px-4 py-2 rounded-md hover:bg-muted transition-colors">Tentang</a>
+                    <a href="#skills" class="nav-link px-4 py-2 rounded-md hover:bg-muted transition-colors">Keahlian</a>
+                    <a href="#experience" class="nav-link px-4 py-2 rounded-md hover:bg-muted transition-colors">Pengalaman</a>
+                    <a href="#projects" class="nav-link px-4 py-2 rounded-md hover:bg-muted transition-colors">Proyek</a>
+                    <a href="#contact" class="nav-link px-4 py-2 rounded-md hover:bg-muted transition-colors">Kontak</a>
+                </div>
+                
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-md hover:bg-muted">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="hidden md:hidden py-2 border-t border-border">
+                <div class="flex flex-col gap-1">
+                    <a href="#hero" class="mobile-link px-3 py-2 text-sm rounded-md hover:bg-muted transition-colors">Beranda</a>
+                    <a href="#about" class="mobile-link px-3 py-2 text-sm rounded-md hover:bg-muted transition-colors">Tentang</a>
+                    <a href="#skills" class="mobile-link px-3 py-2 text-sm rounded-md hover:bg-muted transition-colors">Keahlian</a>
+                    <a href="#experience" class="mobile-link px-3 py-2 text-sm rounded-md hover:bg-muted transition-colors">Pengalaman</a>
+                    <a href="#projects" class="mobile-link px-3 py-2 text-sm rounded-md hover:bg-muted transition-colors">Proyek</a>
+                    <a href="#contact" class="mobile-link px-3 py-2 text-sm rounded-md hover:bg-muted transition-colors">Kontak</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 relative z-10">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+                <div class="space-y-6 order-2 md:order-1 text-left md:pr-8">
+                    <div class="space-y-2">
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold reveal-text text-wrap">
+                            Halo, Saya <span class="text-primary">Mega</span>
+                        </h1>
+                        <p class="text-xl sm:text-2xl text-muted-foreground typing-effect reveal-text text-wrap">
+                            Sedang Melaksanakan PKL di PT Elion Hanaya Abyudaya
+                        </p>
+                    </div>
+                    <p class="text-base sm:text-lg text-muted-foreground leading-relaxed reveal-text text-wrap">
+                        Saya adalah siswa SMK yang passionate dalam pengembangan web dan mobile. Saat ini sedang menjalani Praktik Kerja Lapangan untuk mengasah kemampuan dan mendapatkan pengalaman di dunia industri.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-4 reveal-text">
+                        <a href="#projects" class="magnetic-btn px-6 py-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all hover:scale-105 glow">
+                            Lihat Proyek Saya
+                        </a>
+                        <a href="#contact" class="magnetic-btn px-6 py-3 border border-border rounded-md font-medium hover:bg-muted transition-all hover:scale-105">
+                            Hubungi Saya
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-4 pt-6 reveal-text">
+                        <a href="https://github.com/megicikiwir" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-primary transition-colors float">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.facebook.com/Megicikiwir" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-primary transition-colors float" style="animation-delay: 0.2s;">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://instagram.com/megicikiwir" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-primary transition-colors float" style="animation-delay: 0.4s;">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="mailto:megariska76@gmail.com" class="text-muted-foreground hover:text-primary transition-colors float" style="animation-delay: 0.6s;">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="order-1 md:order-2 flex justify-center">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 float">
+                        <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl hover:scale-105 transition-transform duration-500">
+                            <img src="images/home.png" alt="Mega" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-12 text-center animate-bounce">
+                <a href="#about" class="inline-block text-muted-foreground hover:text-primary transition-colors">
+                    <i data-lucide="arrow-down" class="w-6 h-6"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <div class="container mx-auto max-w-6xl">
+            <div class="space-y-4 mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold reveal-text text-wrap">Tentang Saya</h2>
+                <div class="h-1 w-20 bg-primary rounded-full reveal-text"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-5 gap-8 items-start">
+                <div class="md:col-span-2">
+                    <div class="sticky top-24">
+                        <div class="relative aspect-square rounded-full overflow-hidden shadow-xl border-4 border-primary/20 max-w-sm mx-auto hover:scale-105 transition-transform duration-500">
+                            <img src="images/home.png" alt="Mega" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-3 space-y-8">
+                    <div class="space-y-4">
+                        <p class="text-base leading-relaxed text-muted-foreground reveal-text text-wrap">
+                            Saya adalah siswa kelas XII di SMK Negeri 2 Sumedang dengan jurusan Pemrograman Perangkat Lunak & Gim. Memiliki minat yang besar dalam pengembangan aplikasi web dan mobile, serta selalu antusias untuk mempelajari teknologi baru.
+                        </p>
+                        <p class="text-base leading-relaxed text-muted-foreground reveal-text text-wrap">
+                            Selama menjalani PKL, saya berkesempatan untuk bekerja dalam tim profesional dan mengaplikasikan ilmu yang telah dipelajari di sekolah ke dalam proyek nyata. Pengalaman ini sangat berharga untuk pengembangan karir saya di masa depan.
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-3 reveal-text">
+                        <span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium hover:scale-105 transition-transform">Web Development</span>
+                        <span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium hover:scale-105 transition-transform" style="animation-delay: 0.1s;">Mobile Development</span>
+                        <span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium hover:scale-105 transition-transform" style="animation-delay: 0.2s;">UI/UX Design</span>
+                    </div>
+                    
+                    <div class="bg-card border border-border rounded-lg p-6 space-y-4 shadow-sm hover:shadow-lg transition-shadow reveal-text">
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 bg-primary/10 rounded-lg hover:scale-110 transition-transform">
+                                <i data-lucide="graduation-cap" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold mb-1">Pendidikan</h3>
+                                <p class="text-sm text-muted-foreground">SMK Negeri 2 Sumedang</p>
+                                <p class="text-sm text-muted-foreground">Pemrograman Perangkat Lunak & Gim</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 bg-primary/10 rounded-lg hover:scale-110 transition-transform">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold mb-1">Lokasi PKL</h3>
+                                <p class="text-sm text-muted-foreground">PT Elion Hanaya Abyudaya</p>
+                                <p class="text-sm text-muted-foreground">Sumedang, Indonesia</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 bg-primary/10 rounded-lg hover:scale-110 transition-transform">
+                                <i data-lucide="calendar" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold mb-1">Periode PKL</h3>
+                                <p class="text-sm text-muted-foreground">September 2025 - Desember 2025</p>
+                                <p class="text-sm text-muted-foreground">4 Bulan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto max-w-5xl">
+            <div class="space-y-4 mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold reveal-text text-wrap">Keahlian</h2>
+                <div class="h-1 w-20 bg-primary rounded-full reveal-text"></div>
+                <p class="text-muted-foreground max-w-2xl leading-relaxed reveal-text text-wrap">
+                    Berikut adalah teknologi dan tools yang saya kuasai selama belajar di SMK dan pengalaman selama PKL.
+                </p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all hover:scale-105 reveal-text">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-primary/10 rounded-lg hover:scale-110 transition-transform">
+                            <i data-lucide="code-2" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <div class="flex-1 space-y-3">
+                            <h3 class="font-semibold text-lg">Frontend Development</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-secondary text-secondary-foreground rounded-md text-sm hover:scale-105 transition-transform">HTML & CSS</span>
+                                <span class="px-3 py-1 bg-secondary text-secondary-foreground rounded-md text-sm hover:scale-105 transition-transform">JavaScript</span>
+                                <span class="px-3 py-1 bg-secondary text-secondary-foreground rounded-md text-sm hover:scale-105 transition-transform">Tailwind CSS</span>
+                            </div>
+                            <div class="skill-bar mt-3">
+                                <div class="skill-progress" data-width="20%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all hover:scale-105 reveal-text">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-primary/10 rounded-lg hover:scale-110 transition-transform">
+                            <i data-lucide="database" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <div class="flex-1 space-y-3">
+                            <h3 class="font-semibold text-lg">Backend Development</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-secondary text-secondary-foreground rounded-md text-sm hover:scale-105 transition-transform">Node.js</span>
+                                <span class="px-3 py-1 bg-secondary text-secondary-foreground rounded-md text-sm hover:scale-105 transition-transform">PHP</span>
+                                <span class="px-3 py-1 bg-secondary text-secondary-foreground rounded-md text-sm hover:scale-105 transition-transform">MySQL</span>
+                            </div>
+                            <div class="skill-bar mt-3">
+                                <div class="skill-progress" data-width="15%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all hover:scale-105 reveal-text">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-primary/10 rounded-lg hover:scale-110 transition-transform">
+                            <i data-lucide="smartphone" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <div class="flex-1 space-y-3">
+                            <h3 class="font-semibold text-lg">Mobile Development</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-secondary text-secondary-foreground rounded-md text-sm hover:scale-105 transition-transform">Flutter</span>
+                                <span class="px-3 py-1 bg-secondary text-secondary-foreground rounded-md text-sm hover:scale-105 transition-transform">Android Studio</span>
+                                <span class="px-3 py-1 bg-secondary text-secondary-foreground rounded-md text-sm hover:scale-105 transition-transform">Firebase</span>
+                            </div>
+                            <div class="skill-bar mt-3">
+                                <div class="skill-progress" data-width="10%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all hover:scale-105 reveal-text">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-primary/10 rounded-lg hover:scale-110 transition-transform">
+                            <i data-lucide="palette" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <div class="flex-1 space-y-3">
+                            <h3 class="font-semibold text-lg">Design & Tools</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-secondary text-secondary-foreground rounded-md text-sm hover:scale-105 transition-transform">Figma</span>
+                                <span class="px-3 py-1 bg-secondary text-secondary-foreground rounded-md text-sm hover:scale-105 transition-transform">Git & GitHub</span>
+                                <span class="px-3 py-1 bg-secondary text-secondary-foreground rounded-md text-sm hover:scale-105 transition-transform">VS Code</span>
+                            </div>
+                            <div class="skill-bar mt-3">
+                                <div class="skill-progress" data-width="10%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <div class="container mx-auto max-w-5xl">
+            <div class="space-y-4 mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold reveal-text text-wrap">Pengalaman PKL</h2>
+                <div class="h-1 w-20 bg-primary rounded-full reveal-text"></div>
+            </div>
+            
+            <div class="bg-card border border-border rounded-lg p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all reveal-text">
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="p-3 bg-primary/10 rounded-lg hover:scale-110 transition-transform">
+                        <i data-lucide="briefcase" class="w-6 h-6 text-primary"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-1">Junior Frontend Developer</h3>
+                        <p class="text-muted-foreground">PT Elion Hanaya Abyudaya</p>
+                        <p class="text-sm text-muted-foreground mt-1">September 2025 - Desember 2025 • 4 Bulan</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-semibold mb-3">Tanggung Jawab:</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-3 hover:translate-x-2 transition-transform">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"></i>
+                                <span class="text-muted-foreground">Mengembangkan fitur frontend untuk aplikasi web perusahaan</span>
+                            </li>
+                            <li class="flex items-start gap-3 hover:translate-x-2 transition-transform">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"></i>
+                                <span class="text-muted-foreground">Berkolaborasi dengan tim developer dalam menggunakan Git</span>
+                            </li>
+                            <li class="flex items-start gap-3 hover:translate-x-2 transition-transform">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"></i>
+                                <span class="text-muted-foreground">Belajar best practices dalam software development</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold mb-3">Pencapaian:</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-3 hover:translate-x-2 transition-transform">
+                                <i data-lucide="trophy" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"></i>
+                                <span class="text-muted-foreground">Berhasil menyelesaikan 3 proyek web aplikasi</span>
+                            </li>
+                            <li class="flex items-start gap-3 hover:translate-x-2 transition-transform">
+                                <i data-lucide="trophy" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"></i>
+                                <span class="text-muted-foreground">Meningkatkan performa aplikasi hingga 10%</span>
+                            </li>
+                            <li class="flex items-start gap-3 hover:translate-x-2 transition-transform">
+                                <i data-lucide="trophy" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"></i>
+                                <span class="text-muted-foreground">Berkontribusi pada penyelesaian tugas tepat waktu</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto max-w-7xl">
+            <div class="space-y-4 mb-12 text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold reveal-text text-wrap">Proyek Saya</h2>
+                <div class="h-1 w-20 bg-primary rounded-full mx-auto reveal-text"></div>
+                <p class="text-muted-foreground max-w-2xl mx-auto leading-relaxed reveal-text text-wrap">
+                    Berikut adalah beberapa proyek yang telah saya kerjakan selama di sekolah dan PKL.
+                </p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Proyek 1: Kopi Ellion -->
+                <div class="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer hover-scale shadow-lg reveal-text">
+                    <img src="images/project1.png" alt="Kopi Ellion" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="space-y-3">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white">Kopi Ellion</h3>
+                            <p class="text-white/95 text-sm leading-relaxed line-clamp-3">Aplikasi manajemen pesanan kopi untuk kedai kopi Ellion dengan fitur pemesanan, pembayaran, dan laporan penjualan.</p>
+                        </div>
+                        <div class="flex justify-center">
+                            <a href="https://github.com/megicikiwir/kopi_ellion" target="_blank" class="w-12 h-12 rounded-full bg-white flex items-center justify-center hover:bg-blue-50 transition-colors shadow-lg hover:scale-110 transform">
+                                <i data-lucide="external-link" class="w-5 h-5 text-blue-600"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyek 2: Design Collection -->
+                <div class="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer hover-scale shadow-lg reveal-text">
+                    <img src="images/project2.png" alt="Design Collection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="space-y-3">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white">Design Collection</h3>
+                            <p class="text-white/95 text-sm leading-relaxed line-clamp-3">Kumpulan desain UI/UX untuk berbagai proyek web dan mobile yang dibuat menggunakan Figma dan Adobe XD.</p>
+                        </div>
+                        <div class="flex justify-center">
+                            <a href="https://github.com/megicikiwir/Design" target="_blank" class="w-12 h-12 rounded-full bg-white flex items-center justify-center hover:bg-blue-50 transition-colors shadow-lg hover:scale-110 transform">
+                                <i data-lucide="external-link" class="w-5 h-5 text-blue-600"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyek 3: Sistem Absensi Ellion -->
+                <div class="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer hover-scale shadow-lg reveal-text">
+                    <img src="images/project3.png" alt="Sistem Absensi Ellion" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="space-y-3">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white">Sistem Absensi Ellion</h3>
+                            <p class="text-white/95 text-sm leading-relaxed line-clamp-3">Sistem absensi karyawan dengan face recognition dan integrasi dengan database perusahaan.</p>
+                        </div>
+                        <div class="flex justify-center">
+                            <a href="https://github.com/megicikiwir/elion_absensi" target="_blank" class="w-12 h-12 rounded-full bg-white flex items-center justify-center hover:bg-blue-50 transition-colors shadow-lg hover:scale-110 transform">
+                                <i data-lucide="external-link" class="w-5 h-5 text-blue-600"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyek 4: Web portfolio -->
+                <div class="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer hover-scale shadow-lg reveal-text">
+                    <img src="images/project4.png" alt="Personal Portfolio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 gradient-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="space-y-3">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white">Personal Portfolio</h3>
+                            <p class="text-white/95 text-sm leading-relaxed line-clamp-3">Website portfolio personal yang dirancang untuk menampilkan profil, keahlian, dan proyek-proyek yang telah dikerjakan. Dibangun dengan teknologi modern seperti HTML5, CSS3, JavaScript, dan Tailwind CSS untuk tampilan yang responsif dan menarik.</p>
+                        </div>
+                        <div class="flex justify-center">
+                            <a href="#" class="w-12 h-12 rounded-full bg-white flex items-center justify-center hover:bg-blue-50 transition-colors shadow-lg hover:scale-110 transform">
+                                <i data-lucide="external-link" class="w-5 h-5 text-blue-600"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <div class="container mx-auto max-w-4xl">
+            <div class="space-y-4 mb-12 text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold reveal-text text-wrap">Hubungi Saya</h2>
+                <div class="h-1 w-20 bg-primary rounded-full mx-auto reveal-text"></div>
+                <p class="text-muted-foreground max-w-2xl mx-auto leading-relaxed reveal-text text-wrap">
+                    Tertarik untuk berkolaborasi atau ingin mengetahui lebih lanjut tentang saya? Jangan ragu untuk menghubungi!
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="bg-card border border-border rounded-lg p-4 sm:p-6 md:p-8 shadow-sm hover:shadow-xl transition-all reveal-text">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                        <a href="mailto:megariska76@gmail.com" class="flex flex-col items-center text-center gap-2 p-3 rounded-lg hover:bg-muted transition-colors hover:scale-105 transform">
+                            <div class="p-2 bg-primary/10 rounded-lg hover:scale-110 transition-transform">
+                                <i data-lucide="mail" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-sm mb-1">Email</p>
+                                <p class="text-xs text-muted-foreground">megariska76@gmail.com</p>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:+6285959784342" class="flex flex-col items-center text-center gap-2 p-3 rounded-lg hover:bg-muted transition-colors hover:scale-105 transform">
+                            <div class="p-2 bg-primary/10 rounded-lg hover:scale-110 transition-transform">
+                                <i data-lucide="phone" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-sm mb-1">Telepon</p>
+                                <p class="text-xs text-muted-foreground">+62 859-5978-4342</p>
+                            </div>
+                        </a>
+                        
+                        <div class="flex flex-col items-center text-center gap-2 p-3 rounded-lg hover:scale-105 transform">
+                            <div class="p-2 bg-primary/10 rounded-lg hover:scale-110 transition-transform">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-sm mb-1">Lokasi</p>
+                                <p class="text-xs text-muted-foreground">Sumedang, Indonesia</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-border pt-4">
+                        <p class="text-center text-sm font-semibold mb-3">Ikuti Saya</p>
+                        <div class="flex items-center justify-center gap-3">
+                            <a href="https://github.com/megicikiwir" target="_blank" rel="noopener noreferrer" class="p-2 border border-border rounded-md hover:bg-muted transition-colors hover:scale-110 transform">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                            <a href="https://www.facebook.com/Megicikiwir" target="_blank" rel="noopener noreferrer" class="p-2 border border-border rounded-md hover:bg-muted transition-colors hover:scale-110 transform">
+                                <i data-lucide="facebook" class="w-5 h-5"></i>
+                            </a>
+                            <a href="https://instagram.com/megicikiwir" target="_blank" rel="noopener noreferrer" class="p-2 border border-border rounded-md hover:bg-muted transition-colors hover:scale-110 transform">
+                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center reveal-text">
+                    <a href="mailto:megariska76@gmail.com" class="magnetic-btn inline-block px-6 py-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all hover:scale-105 glow">
+                        Kirim Email
+                    </a>
+                </div>
+            </div>
+            
+            <footer class="mt-12 pt-6 border-t border-border text-center text-sm text-muted-foreground">
+                <p>© 2025 Mega. Dibuat dengan ❤️ untuk PKL</p>
+            </footer>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    
+    <!-- Fallback script untuk menyembunyikan loading screen -->
+    <script>
+        // Fallback jika script.js tidak berfungsi
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const loadingScreen = document.getElementById("loading-screen");
+                if (loadingScreen && !loadingScreen.classList.contains("hidden")) {
+                    loadingScreen.classList.add("hidden");
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
