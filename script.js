@@ -1,4 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Dark mode functionality - otomatis berdasarkan preferensi sistem
+  const html = document.documentElement;
+  
+  // Check for OS dark mode preference
+  const osDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+  
+  // Apply dark mode if OS preference is dark
+  if (osDarkMode.matches) {
+    html.classList.add("dark");
+  }
+  
+  // Listen for changes in OS preference
+  osDarkMode.addEventListener("change", (e) => {
+    if (e.matches) {
+      html.classList.add("dark");
+    } else {
+      html.classList.remove("dark");
+    }
+    
+    // Re-initialize Lucide icons for dark mode
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  });
+
   // Sembunyikan loading screen setelah halaman dimuat
   setTimeout(() => {
     const loadingScreen = document.getElementById("loading-screen")
@@ -237,7 +262,7 @@ async function fetchGitHubProjects() {
         if (filteredRepos.length === 0) {
             projectsContainer.innerHTML = `
                 <div class="text-center py-12 col-span-full">
-                    <p class="text-muted-foreground">Tidak ada proyek yang ditemukan.</p>
+                    <p class="text-muted-foreground dark:text-gray-300">Tidak ada proyek yang ditemukan.</p>
                 </div>
             `;
             return;
@@ -262,7 +287,7 @@ async function fetchGitHubProjects() {
         console.error('Error fetching GitHub projects:', error);
         projectsContainer.innerHTML = `
             <div class="text-center py-12 col-span-full">
-                <p class="text-muted-foreground">Gagal memuat proyek. Silakan coba lagi nanti.</p>
+                <p class="text-muted-foreground dark:text-gray-300">Gagal memuat proyek. Silakan coba lagi nanti.</p>
             </div>
         `;
     }
