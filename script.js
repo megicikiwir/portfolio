@@ -1,29 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Dark mode functionality - otomatis berdasarkan preferensi sistem
-  const html = document.documentElement;
+  // Dark mode functionality
+  const darkModeToggle = document.getElementById("dark-mode-toggle");
+  const mobileDarkModeToggle = document.getElementById("mobile-dark-mode-toggle");
   
-  // Check for OS dark mode preference
-  const osDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+  // Check for saved dark mode preference or respect OS preference
+  const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const savedDarkMode = localStorage.getItem("darkMode");
   
-  // Apply dark mode if OS preference is dark
-  if (osDarkMode.matches) {
-    html.classList.add("dark");
+  // Set initial dark mode state
+  if (savedDarkMode === "true" || (savedDarkMode === null && prefersDarkMode)) {
+    document.documentElement.classList.add("dark");
   }
   
-  // Listen for changes in OS preference
-  osDarkMode.addEventListener("change", (e) => {
-    if (e.matches) {
-      html.classList.add("dark");
-    } else {
-      html.classList.remove("dark");
-    }
+  // Toggle dark mode function
+  const toggleDarkMode = () => {
+    document.documentElement.classList.toggle("dark");
+    const isDarkMode = document.documentElement.classList.contains("dark");
+    localStorage.setItem("darkMode", isDarkMode);
     
-    // Re-initialize Lucide icons for dark mode
+    // Re-initialize Lucide icons after toggling dark mode
     if (window.lucide) {
       window.lucide.createIcons();
     }
-  });
-
+  };
+  
+  // Add event listeners to dark mode toggles
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener("click", toggleDarkMode);
+  }
+  
+  if (mobileDarkModeToggle) {
+    mobileDarkModeToggle.addEventListener("click", toggleDarkMode);
+  }
+  
   // Sembunyikan loading screen setelah halaman dimuat
   setTimeout(() => {
     const loadingScreen = document.getElementById("loading-screen")
@@ -105,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault()
       const target = document.querySelector(this.getAttribute("href"))
       if (target) {
-        const offsetTop = target.offsetTop - 100 // Tambah offset karena navbar lebih tinggi
+        const offsetTop = target.offsetTop - 80 // Tambah offset karena navbar lebih tinggi
         window.scrollTo({
           top: offsetTop,
           behavior: "smooth",
@@ -262,7 +271,7 @@ async function fetchGitHubProjects() {
         if (filteredRepos.length === 0) {
             projectsContainer.innerHTML = `
                 <div class="text-center py-12 col-span-full">
-                    <p class="text-muted-foreground dark:text-gray-300">Tidak ada proyek yang ditemukan.</p>
+                    <p class="text-muted-foreground">Tidak ada proyek yang ditemukan.</p>
                 </div>
             `;
             return;
@@ -287,7 +296,7 @@ async function fetchGitHubProjects() {
         console.error('Error fetching GitHub projects:', error);
         projectsContainer.innerHTML = `
             <div class="text-center py-12 col-span-full">
-                <p class="text-muted-foreground dark:text-gray-300">Gagal memuat proyek. Silakan coba lagi nanti.</p>
+                <p class="text-muted-foreground">Gagal memuat proyek. Silakan coba lagi nanti.</p>
             </div>
         `;
     }

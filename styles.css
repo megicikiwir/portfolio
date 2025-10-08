@@ -28,20 +28,6 @@ body {
   display: none;
 }
 
-/* Dark mode styles */
-.dark {
-  color-scheme: dark;
-}
-
-.dark body {
-  background-color: #111827;
-  color: #f3f4f6;
-}
-
-.dark .loading-screen {
-  background: #111827;
-}
-
 /* Animated gradient background */
 .gradient-bg {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
@@ -71,20 +57,12 @@ body {
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
 }
 
-.dark .glow {
-  box-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
-}
-
 /* Typing effect */
 .typing-effect {
   overflow: hidden;
   border-right: .15em solid #3b82f6;
   white-space: nowrap;
   animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-}
-
-.dark .typing-effect {
-  border-right-color: #60a5fa;
 }
 
 @keyframes typing {
@@ -95,11 +73,6 @@ body {
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: #3b82f6; }
-}
-
-.dark @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: #60a5fa; }
 }
 
 /* Text reveal animation */
@@ -122,20 +95,12 @@ body {
   overflow: hidden;
 }
 
-.dark .skill-bar {
-  background: #1e3a8a;
-}
-
 .skill-progress {
   height: 100%;
   background: linear-gradient(90deg, #3b82f6, #60a5fa);
   border-radius: 4px;
   width: 0;
   transition: width 1.5s ease;
-}
-
-.dark .skill-progress {
-  background: linear-gradient(90deg, #60a5fa, #93c5fd);
 }
 
 /* Magnetic button effect */
@@ -156,10 +121,6 @@ body {
   transition: transform 0.1s ease;
 }
 
-.dark .cursor-dot {
-  background-color: #60a5fa;
-}
-
 .cursor-outline {
   width: 30px;
   height: 30px;
@@ -170,10 +131,6 @@ body {
   z-index: 9997;
   transition: transform 0.3s ease, opacity 0.3s ease;
   opacity: 0.5;
-}
-
-.dark .cursor-outline {
-  border-color: #60a5fa;
 }
 
 /* Parallax layers */
@@ -214,8 +171,8 @@ body {
 #navbar > div { /* Container langsung di dalam navbar */
   width: 100% !important;
   max-width: 100% !important;
-  padding-left: 1rem !important;
-  padding-right: 1rem !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
 }
 
 #navbar.scrolled {
@@ -223,17 +180,17 @@ body {
   backdrop-filter: blur(10px);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   height: auto !important;
-  padding: 0.25rem 0 !important;
-}
-
-.dark #navbar.scrolled {
-  background-color: rgba(17, 24, 39, 0.95);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 0 !important;
 }
 
 #navbar.scrolled > div {
-  padding-top: 0.25rem !important;
-  padding-bottom: 0.25rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Dark mode navbar */
+.dark #navbar.scrolled {
+  background-color: rgba(15, 23, 42, 0.95);
 }
 
 /* Navbar link styling */
@@ -248,18 +205,10 @@ body {
   background: none !important;
 }
 
-.dark .nav-link:hover {
-  color: #60a5fa !important;
-}
-
 .nav-link.active {
   color: #3b82f6 !important;
   font-weight: 600;
   background: none !important;
-}
-
-.dark .nav-link.active {
-  color: #60a5fa !important;
 }
 
 .nav-link.active::after {
@@ -270,10 +219,6 @@ body {
   right: 1rem;
   height: 2px;
   background-color: #3b82f6;
-}
-
-.dark .nav-link.active::after {
-  background-color: #60a5fa;
 }
 
 @keyframes bounce {
@@ -302,10 +247,6 @@ body {
   background: linear-gradient(to bottom, rgba(59, 130, 246, 0.9), rgba(37, 99, 235, 0.8), rgba(29, 78, 216, 0.9));
 }
 
-.dark .gradient-overlay {
-  background: linear-gradient(to bottom, rgba(37, 99, 235, 0.9), rgba(29, 78, 216, 0.8), rgba(30, 58, 138, 0.9));
-}
-
 .line-clamp-3 {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -321,25 +262,13 @@ body {
   background: #f1f5f9;
 }
 
-.dark ::-webkit-scrollbar-track {
-  background: #1f2937;
-}
-
 ::-webkit-scrollbar-thumb {
   background: #3b82f6;
   border-radius: 5px;
 }
 
-.dark ::-webkit-scrollbar-thumb {
-  background: #60a5fa;
-}
-
 ::-webkit-scrollbar-thumb:hover {
   background: #2563eb;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
 }
 
 @keyframes fadeInUp {
@@ -368,7 +297,7 @@ section {
 }
 
 .dark #mobile-menu {
-  background-color: rgba(17, 24, 39, 0.95);
+  background-color: rgba(15, 23, 42, 0.95);
 }
 
 .mobile-link {
@@ -379,11 +308,6 @@ section {
 .mobile-link:hover {
   color: #3b82f6;
   background-color: rgba(59, 130, 246, 0.1);
-}
-
-.dark .mobile-link:hover {
-  color: #60a5fa;
-  background-color: rgba(37, 99, 235, 0.2);
 }
 
 img {
@@ -397,18 +321,13 @@ button:focus {
   outline-offset: 2px;
 }
 
-.dark a:focus,
-.dark button:focus {
-  outline-color: #60a5fa;
-}
-
 /* Geser foto dan isi home ke bawah */
 #hero {
-  padding-top: 3.5rem !important;
+  padding-top: 4rem !important;
 }
 
 #hero .order-1 {
-  margin-top: 1.5rem !important;
+  margin-top: 0.5rem !important;
 }
 
 /* Mobile adjustments */
@@ -460,7 +379,7 @@ button:focus {
   
   /* Perkecil padding di mobile */
   section {
-    padding: 2rem 1rem !important;
+    padding: 1.25rem 1rem !important;
   }
   
   .container {
@@ -478,11 +397,11 @@ button:focus {
   
   /* Geser foto di bagian home sedikit ke bawah */
   #hero {
-    padding-top: 3rem !important;
+    padding-top: 4rem !important;
   }
   
   #hero .order-1 {
-    margin-top: 1.25rem !important; /* Menambahkan margin-top untuk menggeser foto ke bawah */
+    margin-top: 0.5rem !important; /* Geser foto sedikit ke bawah */
   }
   
   /* Perkecil card di mobile */
@@ -496,15 +415,15 @@ button:focus {
     font-size: 0.85rem !important;
   }
   
-  /* Perkecil ikon di mobile */
+  /* Ukuran ikon sedang di mobile */
   .w-5.h-5 {
-    width: 0.875rem !important;
-    height: 0.875rem !important;
+    width: 1.125rem !important;
+    height: 1.125rem !important;
   }
   
   .w-6.h-6 {
-    width: 1rem !important;
-    height: 1rem !important;
+    width: 1.375rem !important;
+    height: 1.375rem !important;
   }
   
   /* Perkecil jarak antar elemen di mobile */
@@ -590,11 +509,6 @@ button:focus {
     padding: 1.5rem !important;
   }
   
-  .px-3 {
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
-  }
-  
   .px-4 {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
@@ -603,11 +517,6 @@ button:focus {
   .py-2 {
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
-  }
-  
-  .py-3 {
-    padding-top: 0.75rem !important;
-    padding-bottom: 0.75rem !important;
   }
   
   /* Perkecil ukuran tag skills di mobile */
@@ -635,10 +544,6 @@ button:focus {
     vertical-align: text-bottom;
   }
   
-  .dark .typing-effect::after {
-    background-color: #60a5fa;
-  }
-  
   /* Mobile menu adjustments */
   #mobile-menu {
     padding: 0.5rem 0 !important;
@@ -655,8 +560,8 @@ button:focus {
   }
   
   #navbar > div {
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
   
   #navbar .text-xl {
@@ -716,7 +621,7 @@ button:focus {
   
   /* Contact section adjustments */
   #contact {
-    padding: 2rem 1rem !important;
+    padding: 1.25rem 1rem !important;
   }
   
   #contact .container {
@@ -748,80 +653,142 @@ button:focus {
     font-size: 0.85rem !important; /* Diperbesar untuk keterbacaan */
   }
   
+  #contact .mb-4,
   #contact .mb-5,
-  #contact .mb-6,
-  #contact .mb-8 {
+  #contact .mb-6 {
     margin-bottom: 1rem !important;
   }
   
+  #contact .pt-3,
   #contact .pt-4,
-  #contact .pt-5 {
+  #contact .pt-5,
+  #contact .pt-6 {
     padding-top: 0.75rem !important;
   }
   
   #contact footer {
-    margin-top: 1.5rem !important;
+    margin-top: 1.25rem !important;
     padding-top: 0.75rem !important;
   }
 }
 
-/* Mobile contact section optimization */
-@media (max-width: 768px) {
-  #contact {
-    padding: 2rem 1rem !important;
-  }
-  
-  #contact .container {
-    padding: 0 !important;
-  }
-  
-  #contact .bg-card {
-    padding: 1rem !important;
-  }
-  
-  #contact .grid {
-    gap: 0.75rem !important;
-  }
-  
-  #contact .p-3 {
-    padding: 0.5rem !important;
-  }
-  
-  #contact .gap-2,
-  #contact .gap-3 {
-    gap: 0.5rem !important;
-  }
-  
-  #contact .text-xs {
-    font-size: 0.8rem !important;
-  }
-  
-  #contact .text-sm {
-    font-size: 0.85rem !important;
-  }
-  
-  #contact .mb-5,
-  #contact .mb-6,
-  #contact .mb-8 {
-    margin-bottom: 1rem !important;
-  }
-  
-  #contact .pt-4,
-  #contact .pt-5 {
-    padding-top: 0.75rem !important;
-  }
-  
-  #contact footer {
-    margin-top: 1.5rem !important;
-    padding-top: 0.75rem !important;
-  }
+/* Dark mode styles */
+.dark {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+.dark .bg-background {
+  background-color: #0f172a;
+}
+
+.dark .text-foreground {
+  color: #f1f5f9;
+}
+
+.dark .bg-card {
+  background-color: #1e293b;
+}
+
+.dark .text-card-foreground {
+  color: #f1f5f9;
+}
+
+.dark .bg-muted {
+  background-color: #1e293b;
+}
+
+.dark .text-muted-foreground {
+  color: #94a3b8;
+}
+
+.dark .border-border {
+  border-color: #334155;
+}
+
+.dark .bg-secondary {
+  background-color: #334155;
+}
+
+.dark .text-secondary-foreground {
+  color: #f1f5f9;
+}
+
+.dark .bg-accent {
+  background-color: #1e3a8a;
+}
+
+.dark .text-accent-foreground {
+  color: #f1f5f9;
+}
+
+.dark .skill-bar {
+  background: #334155;
+}
+
+.dark .typing-effect::after {
+  background-color: #60a5fa;
+}
+
+.dark .nav-link.active::after {
+  background-color: #60a5fa;
+}
+
+.dark .gradient-overlay {
+  background: linear-gradient(to bottom, rgba(59, 130, 246, 0.9), rgba(37, 99, 235, 0.8), rgba(29, 78, 216, 0.9));
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #60a5fa;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* Dark mode project cards */
+.dark .project-card {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+/* Dark mode contact cards */
+.dark .contact-card {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+/* Dark mode buttons */
+.dark .btn-primary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.dark .btn-primary:hover {
+  background-color: #2563eb;
+}
+
+.dark .btn-secondary {
+  background-color: #334155;
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+.dark .btn-secondary:hover {
+  background-color: #475569;
 }
 
 @media print {
   nav,
   #mobile-menu,
   .cursor-dot,
-  .cursor-outline {
+  .cursor-outline,
+  #dark-mode-toggle,
+  #mobile-dark-mode-toggle {
     display: none;
   }
   section {
