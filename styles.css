@@ -323,11 +323,11 @@ button:focus {
 
 /* Geser foto dan isi home ke bawah */
 #hero {
-  padding-top: 4rem !important;
+  padding-top: 3.5rem !important;
 }
 
 #hero .order-1 {
-  margin-top: 0.5rem !important;
+  margin-top: -0.25rem !important;
 }
 
 /* Mobile adjustments */
@@ -397,11 +397,11 @@ button:focus {
   
   /* Geser foto di bagian home sedikit ke bawah */
   #hero {
-    padding-top: 4rem !important;
+    padding-top: 3.5rem !important;
   }
   
   #hero .order-1 {
-    margin-top: 0.5rem !important; /* Geser foto sedikit ke bawah */
+    margin-top: -0.25rem !important; /* Geser foto sedikit ke atas */
   }
   
   /* Perkecil card di mobile */
